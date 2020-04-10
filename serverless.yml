@@ -2,7 +2,7 @@ service: ${file(./secrets.json):ApiName}
 
 provider:
   name: aws
-  region: us-east-1
+  region: ap-northeast-1
   stage: dev
   memorySize: 256
   runtime: nodejs12.x
