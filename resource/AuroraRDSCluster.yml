@@ -13,7 +13,7 @@ Properties:
     Ref: AuroraRDSClusterParameter
   ScalingConfiguration:
     AutoPause: true
-    MinCapacity: 1
+    MinCapacity: 2
     MaxCapacity: 32
     SecondsUntilAutoPause: 1000
   VpcSecurityGroupIds:
