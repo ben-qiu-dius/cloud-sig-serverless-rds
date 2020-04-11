@@ -37,9 +37,13 @@ custom:
       Fn::GetAtt: [PostgreSqlRDSInstance, Endpoint.Address]
     PORT:
       Fn::GetAtt: [PostgreSqlRDSInstance, Endpoint.Port]
+  prune:
+    automatic: true
+    number: 1
 
 plugins:
   - serverless-pseudo-parameters
+  - serverless-prune-plugin
 resources:
   Resources:
     LambdaRole: ${file(./resource/LambdaRole.yml)}
