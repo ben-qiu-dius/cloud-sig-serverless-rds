@@ -19,13 +19,15 @@ input PostInput{
 }
 
 type Mutation {
-	postgresql_createUser(input: UserInput!): User
-	aurora_createUser(input: UserInput!): User
+	postgresCreateUser(input: UserInput!): User
+	proxyCreateUser(input: UserInput!): User
+	auroraCreateUser(input: UserInput!): User
 }
 
 type Query {
-	postgresql_getUser(uuid: String!): User
-	aurora_getUser(uuid: String!): User
+	postgresGetUser(uuid: String!): User
+	proxyGetUser(uuid: String!): User
+	auroraGetUser(uuid: String!): User
 }
 
 schema {

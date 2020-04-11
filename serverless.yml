@@ -17,8 +17,11 @@ provider:
     AURORA_HOST: ${self:custom.AURORA.HOST}
     AURORA_PORT: ${self:custom.AURORA.PORT}
     #postgresql
-    POSTGRESQL_HOST: ${self:custom.POSTGRESQL.HOST}
-    POSTGRESQL_PORT: ${self:custom.POSTGRESQL.PORT}
+    POSTGRES_HOST: ${self:custom.POSTGRES.HOST}
+    POSTGRES_PORT: ${self:custom.POSTGRES.PORT}
+    #proxy
+    POSTGRES_PROXY_HOST: ${self:custom.POSTGRES_PROXY.HOST}
+    POSTGRES_PROXY_PORT: ${self:custom.POSTGRES_PROXY.HOST}
     #common
     DB_NAME: ${self:custom.DB_NAME}
     USERNAME: ${self:custom.USERNAME}
@@ -33,11 +36,14 @@ custom:
     PORT:
       Fn::GetAtt: [AuroraRDSCluster, Endpoint.Port]
     VPC_CIDR: 10
-  POSTGRESQL:
+  POSTGRES:
     HOST:
       Fn::GetAtt: [PostgreSqlRDSInstance, Endpoint.Address]
     PORT:
       Fn::GetAtt: [PostgreSqlRDSInstance, Endpoint.Port]
+  POSTGRES_PROXY:
+    HOST: ben-cloud-sig-test-proxy.proxy-ce6hqgcgoi5l.ap-northeast-1.rds.amazonaws.com
+    PORT: 5432
   prune:
     automatic: true
     number: 1
