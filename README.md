@@ -10,15 +10,14 @@ authorName: ‘Chief Wizard’
 authorAvatar: ‘https://avatars3.githubusercontent.com/u/40777040?v=4&s=140
 -->
 
-# A Simple Serverless GraphQL API for MySQL, Postgres and Aurora
+# A Simple Serverless GraphQL API for Postgres and Aurora Postgres(Severless)
 
 This is an example project using the [Serverless framework](https://serverless.com/framework/), Node.js and [Amazon RDS](https://aws.amazon.com/rds/).
 
-This project uses 3 RDS databases to illustrate the differences between using each of them:
+This project uses 2 RDS databases to illustrate the differences between using each of them:
 
-* MySQL
 * PostgreSQL
-* MySQL-compatible Amazon Aurora
+* PostgreSQL-compatible Amazon Aurora
 
 ## How to Deploy This Project
 
