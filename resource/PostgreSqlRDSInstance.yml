@@ -1,6 +1,5 @@
 DependsOn: ServerlessVPCGA
 Type: AWS::RDS::DBInstance
-DeletionPolicy: Delete # Sig only, remove all once sig is done
 Properties:
   MasterUsername: ${self:custom.USERNAME}
   MasterUserPassword: ${self:custom.PASSWORD}

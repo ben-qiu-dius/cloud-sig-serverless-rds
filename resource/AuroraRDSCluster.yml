@@ -1,6 +1,5 @@
 Type: AWS::RDS::DBCluster
 Properties:
-  DeletionPolicy: Delete # Sig only, remove all once sig is done
   MasterUsername: ${self:custom.USERNAME}
   MasterUserPassword: ${self:custom.PASSWORD}
   DBSubnetGroupName:
