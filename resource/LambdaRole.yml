@@ -9,12 +9,24 @@ Properties:
     Version: '2012-10-17'
   Policies:
     - PolicyName: CanLog
-      PolicyDocument: 
+      PolicyDocument:
         Version: '2012-10-17'
-        Statement: 
+        Statement:
           - Effect: Allow
             Action:
               - logs:CreateLogStream
               - logs:CreateLogGroup
               - logs:PutLogEvents
             Resource: arn:aws:logs:*:*:*
+    - PolicyName: CanCreateVPC
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - ec2:DescribeNetworkInterfaces
+              - ec2:CreateNetworkInterface
+              - ec2:DeleteNetworkInterface
+              - ec2:DescribeInstances
+              - ec2:AttachNetworkInterface
+            Resource: '*'

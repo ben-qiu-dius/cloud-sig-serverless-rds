@@ -15,6 +15,7 @@
         "uuid": "^3.3.2"
     },
     "devDependencies": {
+        "loadtest": "^5.0.1",
         "serverless-prune-plugin": "^1.4.2",
         "serverless-pseudo-parameters": "^2.4.0"
     }

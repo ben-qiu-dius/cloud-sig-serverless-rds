@@ -11,4 +11,4 @@ Properties:
   DBSubnetGroupName:
     Ref: ServerlessSubnetGroup
   Engine: postgres
-  PubliclyAccessible: true
+  PubliclyAccessible: false
