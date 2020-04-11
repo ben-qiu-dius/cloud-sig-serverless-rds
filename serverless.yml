@@ -1,5 +1,9 @@
 service: ${file(./secrets.json):ApiName}
 
+package:
+  exclude:
+    - resources/**
+
 provider:
   name: aws
   region: ap-northeast-1
