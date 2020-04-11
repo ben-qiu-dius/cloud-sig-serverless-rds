@@ -28,11 +28,6 @@ custom:
     PORT:
       Fn::GetAtt: [AuroraRDSCluster, Endpoint.Port]
     VPC_CIDR: 10
-  MYSQL:
-    HOST:
-      Fn::GetAtt: [MySqlRDSInstance, Endpoint.Address]
-    PORT:
-      Fn::GetAtt: [MySqlRDSInstance, Endpoint.Port]
   POSTGRESQL:
     HOST:
       Fn::GetAtt: [PostgreSqlRDSInstance, Endpoint.Address]
@@ -59,9 +54,7 @@ resources:
     RouteTableAssociationSubnetC: ${file(./resource/RouteTableAssociationSubnetC.yml)}
 
     AuroraRDSClusterParameter: ${file(./resource/AuroraRDSClusterParameter.yml)}
-    AuroraRDSInstanceParameter: ${file(./resource/AuroraRDSInstanceParameter.yml)}
     AuroraRDSCluster: ${file(./resource/AuroraRDSCluster.yml)}
-    AuroraRDSInstance: ${file(./resource/AuroraRDSInstance.yml)}
 
     PostgreSqlRDSInstance: ${file(./resource/PostgreSqlRDSInstance.yml)}
 

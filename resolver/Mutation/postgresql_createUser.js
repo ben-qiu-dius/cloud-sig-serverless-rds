@@ -2,7 +2,7 @@ const uuidv4 = require('uuid/v4');
 const { Client } = require('pg')
 var common = require('../Common/postgresql')
 
-exports.func = async (_, obj) => {
+exports.createUser = async (_, obj) => {
     var client = new Client({
         host: process.env.POSTGRESQL_HOST,
         port: process.env.POSTGRESQL_PORT,

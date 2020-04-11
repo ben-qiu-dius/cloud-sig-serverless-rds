@@ -1,5 +1,5 @@
 {
-    "name": "graphql-api-and-serverless",
+    "name": "ben-cloud-sig-serverless-rds",
     "version": "1.0.0",
     "description": "",
     "main": "handler.js",

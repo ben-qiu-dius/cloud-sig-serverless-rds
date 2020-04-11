@@ -1,14 +1,21 @@
 Type: AWS::RDS::DBCluster
 Properties:
+  DeletionPolicy: Delete # Sig only, remove all once sig is done
   MasterUsername: ${self:custom.USERNAME}
   MasterUserPassword: ${self:custom.PASSWORD}
   DBSubnetGroupName:
     Ref: ServerlessSubnetGroup
-  Engine: aurora
-  EngineVersion: "5.6"
+  Engine: aurora-postgresql
+  EngineMode: serverless
+  EngineVersion: "10.7"
   DatabaseName: ${self:custom.DB_NAME}
   BackupRetentionPeriod: 3
   DBClusterParameterGroupName:
     Ref: AuroraRDSClusterParameter
+  ScalingConfiguration:
+    AutoPause: true
+    MinCapacity: 1
+    MaxCapacity: 32
+    SecondsUntilAutoPause: 1000
   VpcSecurityGroupIds:
-  - !Ref 'ServerlessSecurityGroup'
+    - !Ref 'ServerlessSecurityGroup'

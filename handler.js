@@ -1,23 +1,25 @@
-const { GraphQLServerLambda } = require("graphql-yoga");
-var fs = require("fs")
+const { GraphQLServerLambda } = require('graphql-yoga')
+var fs = require('fs')
+const { getUser } = require('./resolver/Mutation/aurora_createUser')
+const { createUser } = require('./resolver/Mutation/postgresql_createUser')
 
-const typeDefs = fs.readFileSync("./schema.gql").toString('utf-8');
+const typeDefs = fs.readFileSync('./schema.gql').toString('utf-8')
 
 const resolvers = {
-    Query: {
-        postgresql_getUser: require("./resolver/Query/postgresql_getUser").func,
-        aurora_getUser: require("./resolver/Query/aurora_getUser").func
-    },
-    Mutation: {
-        postgresql_createUser: require("./resolver/Mutation/postgresql_createUser").func,
-        aurora_createUser: require("./resolver/Mutation/aurora_createUser").func
-    }
-};
+  Query: {
+    postgresql_getUser: getUser,
+    aurora_getUser: getUser,
+  },
+  Mutation: {
+    postgresql_createUser: createUser,
+    aurora_createUser: createUser,
+  },
+}
 
 const lambda = new GraphQLServerLambda({
-    typeDefs,
-    resolvers
-});
+  typeDefs,
+  resolvers,
+})
 
-exports.server = lambda.graphqlHandler;
-exports.playground = lambda.playgroundHandler;
+exports.server = lambda.graphqlHandler
+exports.playground = lambda.playgroundHandler
