@@ -1,18 +1,20 @@
 const { GraphQLServerLambda } = require('graphql-yoga')
 var fs = require('fs')
-const { getUser } = require('./resolver/Query/postgresql_getUser')
-const { createUser } = require('./resolver/Mutation/postgresql_createUser')
+const { postgresqlGetUser } = require('./resolver/Query/postgresql_getUser')
+const { auroraGetUser } = require('./resolver/Query/aurora_getUser')
+const { postgresqlCreateUser } = require('./resolver/Mutation/postgresql_createUser')
+const { auroraCreateUser } = require('./resolver/Mutation/aurora_createUser')
 
 const typeDefs = fs.readFileSync('./schema.gql').toString('utf-8')
 
 const resolvers = {
   Query: {
-    postgresql_getUser: getUser,
-    aurora_getUser: getUser,
+    postgresql_getUser: postgresqlGetUser,
+    aurora_getUser: auroraGetUser,
   },
   Mutation: {
-    postgresql_createUser: createUser,
-    aurora_createUser: createUser,
+    postgresql_createUser: postgresqlCreateUser,
+    aurora_createUser: auroraCreateUser,
   },
 }
 
