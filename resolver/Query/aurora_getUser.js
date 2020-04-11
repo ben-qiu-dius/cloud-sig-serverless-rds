@@ -1,0 +1,16 @@
+const { Client } = require('pg')
+var common = require('../Common/postgresql')
+exports.getUser = async (_, { uuid }) => {
+    var client = new Client({
+        host: process.env.AURORA_HOST,
+        port: process.env.AURORA_PORT,
+        database: process.env.DB_NAME,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD
+    })
+    client.connect()
+    await common.init(client)
+    var resp = await common.getUser(client, uuid);
+    client.end()
+    return resp;
+}
