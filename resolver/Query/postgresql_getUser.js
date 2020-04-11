@@ -1,6 +1,6 @@
 const { Client } = require('pg')
 var common = require('../Common/postgresql')
-exports.getUser = async (_, { uuid }) => {
+exports.postgresqlGetUser = async (_, { uuid }) => {
     var client = new Client({
         host: process.env.POSTGRESQL_HOST,
         port: process.env.POSTGRESQL_PORT,

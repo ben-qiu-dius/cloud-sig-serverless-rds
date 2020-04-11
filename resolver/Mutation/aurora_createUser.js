@@ -2,7 +2,7 @@ const uuidv4 = require('uuid/v4');
 const { Client } = require('pg')
 var common = require('../Common/postgresql')
 
-exports.createUser = async (_, obj) => {
+exports.auroraCreateUser = async (_, obj) => {
     var client = new Client({
         host: process.env.AURORA_HOST,
         port: process.env.AURORA_PORT,
