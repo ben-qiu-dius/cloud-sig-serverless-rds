@@ -21,7 +21,7 @@ provider:
     POSTGRES_PORT: ${self:custom.POSTGRES.PORT}
     #proxy
     POSTGRES_PROXY_HOST: ${self:custom.POSTGRES_PROXY.HOST}
-    POSTGRES_PROXY_PORT: ${self:custom.POSTGRES_PROXY.HOST}
+    POSTGRES_PROXY_PORT: ${self:custom.POSTGRES_PROXY.PORT}
     #common
     DB_NAME: ${self:custom.DB_NAME}
     USERNAME: ${self:custom.USERNAME}
