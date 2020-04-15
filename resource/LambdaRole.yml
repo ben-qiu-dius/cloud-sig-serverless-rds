@@ -1,12 +1,12 @@
 Type: AWS::IAM::Role
 Properties:
   AssumeRolePolicyDocument:
+    Version: '2012-10-17'
     Statement:
     - Effect: Allow
       Action: sts:AssumeRole
       Principal:
         Service: lambda.amazonaws.com
-    Version: '2012-10-17'
   Policies:
     - PolicyName: CanLog
       PolicyDocument:
@@ -30,3 +30,12 @@ Properties:
               - ec2:DescribeInstances
               - ec2:AttachNetworkInterface
             Resource: '*'
+    - PolicyName: CanConnectRDSProxy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - rds-db:connect
+            # hard-coded for now
+            Resource: arn:aws:rds-db:ap-northeast-1:773592622512:dbuser:prx-0a242adf1ececc570/*

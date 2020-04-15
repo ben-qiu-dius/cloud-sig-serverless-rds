@@ -8,6 +8,7 @@ provider:
   name: aws
   region: ap-northeast-1
   logRetentionInDays: 14
+  timeout: 10
   stage: dev
   memorySize: 256
   runtime: nodejs12.x
@@ -25,11 +26,10 @@ provider:
     #common
     DB_NAME: ${self:custom.DB_NAME}
     USERNAME: ${self:custom.USERNAME}
-    PASSWORD: ${self:custom.PASSWORD}
+    PASSWORD: !Join ['', ['{{resolve:secretsmanager:', !Ref DBSecret, ':SecretString:password}}' ]]
 custom:
   DB_NAME: graphql
   USERNAME: master
-  PASSWORD: password
   AURORA:
     HOST:
       Fn::GetAtt: [AuroraRDSCluster, Endpoint.Address]
@@ -67,11 +67,11 @@ resources:
     RouteTableAssociationSubnetA: ${file(./resource/RouteTableAssociationSubnetA.yml)}
     RouteTableAssociationSubnetB: ${file(./resource/RouteTableAssociationSubnetB.yml)}
     RouteTableAssociationSubnetC: ${file(./resource/RouteTableAssociationSubnetC.yml)}
-
     AuroraRDSClusterParameter: ${file(./resource/AuroraRDSClusterParameter.yml)}
     AuroraRDSCluster: ${file(./resource/AuroraRDSCluster.yml)}
-
     PostgreSqlRDSInstance: ${file(./resource/PostgreSqlRDSInstance.yml)}
+    DBSecret: ${file(./resource/DBSecret.yml)}
+    RDSProxyRole: ${file(./resource/RDSProxyRole.yml)}
 
 functions:
   graphql:

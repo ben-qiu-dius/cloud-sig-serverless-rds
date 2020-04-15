@@ -27,6 +27,6 @@ loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
 # Testing DB read from postgres with proxy
 echo ""
 echo ""
-echo "================================ PROXY READ LOADTESTING ======================================"
-loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
-         -P '{"operationName":null,"variables":{},"query":"{\n  proxyGetUser(uuid: \"2bbdbe58-1151-4a3e-839a-3a52eb4821be\") {\n    UUID\n    Name\n  }\n}\n"}' \
+# echo "================================ PROXY READ LOADTESTING ======================================"
+# loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
+#          -P '{"operationName":null,"variables":{},"query":"{\n  proxyGetUser(uuid: \"2bbdbe58-1151-4a3e-839a-3a52eb4821be\") {\n    UUID\n    Name\n  }\n}\n"}' \

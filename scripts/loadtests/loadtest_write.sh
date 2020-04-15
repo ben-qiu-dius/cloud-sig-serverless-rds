@@ -23,6 +23,6 @@ loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
 # Testing DB write to postgres with proxy
 echo ""
 echo ""
-echo "================================ PROXY WRITE LOADTESTING ======================================"
-loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
-         -P '{"operationName":null,"variables":{},"query":"mutation {\n  proxyCreateUser(input: {Name: \"test\", Posts: [{Text: \"test\"}]}) {\n    UUID\n    Name\n  }\n}\n"}' \
+# echo "================================ PROXY WRITE LOADTESTING ======================================"
+# loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
+#          -P '{"operationName":null,"variables":{},"query":"mutation {\n  proxyCreateUser(input: {Name: \"test\", Posts: [{Text: \"test\"}]}) {\n    UUID\n    Name\n  }\n}\n"}' \

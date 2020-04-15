@@ -1,0 +1,25 @@
+Type: AWS::IAM::Role
+Properties:
+  AssumeRolePolicyDocument:
+    Version: '2012-10-17'
+    Statement:
+      - Action: sts:AssumeRole
+        Effect: Allow
+        Principal:
+          Service:
+          - rds.amazonaws.com
+  Description: RDS Proxy role
+  Policies:
+    - PolicyName: AllowGetSecret
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Action:
+              - secretsmanager:GetSecretValue
+            Effect: Allow
+            Resource: !Ref DBSecret
+          - Action:
+              - kms:Decrypt
+            Effect: Allow
+            Resource: "arn:aws:kms:#{AWS::Region}:#{AWS::AccountId}:key/*"
+  RoleName: RDSProxyRole

@@ -1,7 +1,7 @@
 Type: AWS::RDS::DBCluster
 Properties:
-  MasterUsername: ${self:custom.USERNAME}
-  MasterUserPassword: ${self:custom.PASSWORD}
+  MasterUsername: !Join ['', ['{{resolve:secretsmanager:', !Ref DBSecret, ':SecretString:username}}' ]]
+  MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !Ref DBSecret, ':SecretString:password}}' ]]
   DBSubnetGroupName:
     Ref: ServerlessSubnetGroup
   Engine: aurora-postgresql
