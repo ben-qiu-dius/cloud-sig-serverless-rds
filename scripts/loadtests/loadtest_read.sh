@@ -9,6 +9,7 @@ NUMBER_OF_REQUESTS=${2:-1000}
 # POSTGRES_UUID='2bbdbe58-1151-4a3e-839a-3a52eb4821be'
 
 # Testing DB read from aurora serverless
+
 echo ""
 echo ""
 echo "================================ AURORA READ LOADTESTING ======================================"
@@ -17,6 +18,7 @@ loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
 
 
 # Testing DB read from postgres
+
 echo ""
 echo ""
 echo "================================ POSTGRES READ LOADTESTING ======================================"
@@ -25,8 +27,9 @@ loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
 
 
 # Testing DB read from postgres with proxy
-echo ""
-echo ""
+
+# echo ""
+# echo ""
 # echo "================================ PROXY READ LOADTESTING ======================================"
 # loadtest $HOST -c $CONCURRENCY -n $NUMBER_OF_REQUESTS \
 #          -P '{"operationName":null,"variables":{},"query":"{\n  proxyGetUser(uuid: \"2bbdbe58-1151-4a3e-839a-3a52eb4821be\") {\n    UUID\n    Name\n  }\n}\n"}' \
