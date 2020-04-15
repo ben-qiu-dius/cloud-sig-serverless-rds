@@ -1,5 +1,6 @@
 const { Client } = require('pg')
 const AWS = require('aws-sdk')
+const fs = require('fs')
 
 const generateToken = () => {
   const signer = new AWS.RDS.Signer({
@@ -82,9 +83,10 @@ exports.clientFor = (name) => {
   return new Client({
     host,
     port,
-    ssl: { rejectUnauthorized: false },
+    // ssl: { rejectUnauthorized: false, ca: fs.readFileSync(`${__dirname}/rds-combined-ca-bundle.pem`).toString() },
     database: process.env.DB_NAME,
     user: process.env.USERNAME,
-    password: name === 'proxy' ? generateToken() : process.env.PASSWORD,
+    // password: name === 'proxy' ? generateToken() : process.env.PASSWORD,
+    password: process.env.PASSWORD,
   })
 }
